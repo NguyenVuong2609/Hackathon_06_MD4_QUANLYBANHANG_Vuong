@@ -189,7 +189,6 @@ BEGIN
     where cusID = c.customer_id;
 END //
 
-
 -- Tạo PROCEDURE tạo mới một đơn hàng với các tham số là mã khách hàng, tổng tiền và ngày tạo hoá đơn, và hiển thị ra mã hoá đơn vừa tạo.
 DELIMITER //
 CREATE PROCEDURE PROC_CREATE_NEW_ORDER_THEN_SHOW_IT
@@ -225,4 +224,3 @@ BEGIN
     group by p.product_id
     order by Total DESC;
 END //
-call PROC_COUNT_PRODUCT_BY_MONTH("03","2023");
