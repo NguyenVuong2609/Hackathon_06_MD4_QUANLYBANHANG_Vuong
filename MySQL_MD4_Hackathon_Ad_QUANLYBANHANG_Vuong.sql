@@ -183,11 +183,12 @@ DELIMITER //
 CREATE PROCEDURE PROC_SHOWLISTORDERBYCUSTOMERID
 (IN cusID varchar(4))
 BEGIN
-	select *
+	select row_number() over (order by o.order_id ASC) as 'STT', o.order_id, o.order_date, o.total_amount
     from orders o
     join customers c on c.customer_id = o.customer_id
     where cusID = c.customer_id;
 END //
+
 
 -- Tạo PROCEDURE tạo mới một đơn hàng với các tham số là mã khách hàng, tổng tiền và ngày tạo hoá đơn, và hiển thị ra mã hoá đơn vừa tạo.
 DELIMITER //
